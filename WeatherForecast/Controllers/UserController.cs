@@ -15,7 +15,7 @@ public class UserController(UserService service) : ControllerBase {
     }
 
     [HttpGet("{email}")]
-    public async Task<ActionResult<UserResponseDTO>> GetUser(string email)
+    public async Task<ActionResult<UserResponseDto>> GetUser(string email)
     {
         var user = await service.GetUserByEmailAsync(email);
         if (user == null) return NotFound();
@@ -23,7 +23,7 @@ public class UserController(UserService service) : ControllerBase {
     }
 
     [HttpPost]
-    public async Task<ActionResult<UserResponseDTO>> CreateUser([FromBody] UserCreateDTO userDto)
+    public async Task<ActionResult<UserResponseDto>> CreateUser([FromBody] UserCreateDto userDto)
     {
         var userResponse = await service.CreateUserAsync(userDto);
         return CreatedAtAction(nameof(GetUser), new { email = userResponse.Email }, userResponse);

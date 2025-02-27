@@ -8,17 +8,17 @@ namespace WeatherForecast.Services;
 public class UserService(IUserRepository repository, IMapper mapper) {
     public async Task<List<User>> GetAllUsersAsync() => await repository.GetAllUsersAsync();
 
-    public async Task<UserResponseDTO?> GetUserByEmailAsync(string email)
+    public async Task<UserResponseDto?> GetUserByEmailAsync(string email)
     {
         var user = await repository.GetUserByEmailAsync(email);
-        return user == null ? null : mapper.Map<UserResponseDTO>(user);
+        return user == null ? null : mapper.Map<UserResponseDto>(user);
     }
 
-    public async Task<UserResponseDTO> CreateUserAsync(UserCreateDTO userDto)
+    public async Task<UserResponseDto> CreateUserAsync(UserCreateDto userDto)
     {
         var user = mapper.Map<User>(userDto); 
         await repository.AddUserAsync(user);
         await repository.SaveChangesAsync();
-        return mapper.Map<UserResponseDTO>(user); 
+        return mapper.Map<UserResponseDto>(user); 
     }
 }
