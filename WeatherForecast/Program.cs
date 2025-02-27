@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WeatherForecast.Data;
+using WeatherForecast.Mappings;
 using WeatherForecast.Repositories;
 using WeatherForecast.Services;
 
@@ -16,6 +17,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Register DI
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<UserService>();
+
+builder.Services.AddAutoMapper(typeof(UserProfile));
 
 // Connect controllers
 builder.Services.AddControllers();

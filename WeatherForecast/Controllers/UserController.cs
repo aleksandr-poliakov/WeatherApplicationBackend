@@ -14,9 +14,10 @@ public class UserController(UserService service) : ControllerBase {
         return Ok(users);
     }
 
-    [HttpGet("{id:int}")]
-    public async Task<ActionResult<UserResponseDTO>> GetUser(int id) {
-        var user = await service.GetUserByIdAsync(id);
+    [HttpGet("{email}")]
+    public async Task<ActionResult<UserResponseDTO>> GetUser(string email)
+    {
+        var user = await service.GetUserByEmailAsync(email);
         if (user == null) return NotFound();
         return Ok(user);
     }
@@ -24,7 +25,7 @@ public class UserController(UserService service) : ControllerBase {
     [HttpPost]
     public async Task<ActionResult<UserResponseDTO>> CreateUser([FromBody] UserCreateDTO userDto)
     {
-        var user = await service.CreateUserAsync(userDto);
-        return CreatedAtAction(nameof(GetUser), new { email = user.Email }, new UserResponseDTO { Name = user.Name, Email = user.Email });
+        var userResponse = await service.CreateUserAsync(userDto);
+        return CreatedAtAction(nameof(GetUser), new { email = userResponse.Email }, userResponse);
     }
 }

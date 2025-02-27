@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "aSw6E8RAb1E=",
+  "dgSpecHash": "NDfmvvtn/+Q=",
   "success": true,
   "projectFilePath": "/Users/oleksandrp/RiderProjects/WeatherForecast/WeatherForecast/WeatherForecast.csproj",
   "expectedPackageFiles": [
+    "/Users/oleksandrp/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/Users/oleksandrp/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/Users/oleksandrp/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/oleksandrp/.nuget/packages/microsoft.aspnetcore.authorization/1.0.0/microsoft.aspnetcore.authorization.1.0.0.nupkg.sha512",
     "/Users/oleksandrp/.nuget/packages/microsoft.aspnetcore.hosting.abstractions/1.0.0/microsoft.aspnetcore.hosting.abstractions.1.0.0.nupkg.sha512",
@@ -29,7 +31,7 @@
     "/Users/oleksandrp/.nuget/packages/microsoft.codeanalysis.csharp.workspaces/4.8.0/microsoft.codeanalysis.csharp.workspaces.4.8.0.nupkg.sha512",
     "/Users/oleksandrp/.nuget/packages/microsoft.codeanalysis.workspaces.common/4.8.0/microsoft.codeanalysis.workspaces.common.4.8.0.nupkg.sha512",
     "/Users/oleksandrp/.nuget/packages/microsoft.codeanalysis.workspaces.msbuild/4.8.0/microsoft.codeanalysis.workspaces.msbuild.4.8.0.nupkg.sha512",
-    "/Users/oleksandrp/.nuget/packages/microsoft.csharp/4.0.1/microsoft.csharp.4.0.1.nupkg.sha512",
+    "/Users/oleksandrp/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/oleksandrp/.nuget/packages/microsoft.entityframeworkcore/9.0.2/microsoft.entityframeworkcore.9.0.2.nupkg.sha512",
     "/Users/oleksandrp/.nuget/packages/microsoft.entityframeworkcore.abstractions/9.0.2/microsoft.entityframeworkcore.abstractions.9.0.2.nupkg.sha512",
     "/Users/oleksandrp/.nuget/packages/microsoft.entityframeworkcore.analyzers/9.0.2/microsoft.entityframeworkcore.analyzers.9.0.2.nupkg.sha512",

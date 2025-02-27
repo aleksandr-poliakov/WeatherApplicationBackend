@@ -1,19 +1,24 @@
+using AutoMapper;
 using WeatherForecast.Dto;
 using WeatherForecast.Models;
 using WeatherForecast.Repositories;
 
 namespace WeatherForecast.Services;
 
-public class UserService(IUserRepository repository) {
+public class UserService(IUserRepository repository, IMapper mapper) {
     public async Task<List<User>> GetAllUsersAsync() => await repository.GetAllUsersAsync();
 
-    public async Task<User?> GetUserByIdAsync(int id) => await repository.GetUserByIdAsync(id);
-
-    public async Task<User> CreateUserAsync(UserCreateDTO userDto)
+    public async Task<UserResponseDTO?> GetUserByEmailAsync(string email)
     {
-        var user = new User(userDto.Name, userDto.Email);
+        var user = await repository.GetUserByEmailAsync(email);
+        return user == null ? null : mapper.Map<UserResponseDTO>(user);
+    }
+
+    public async Task<UserResponseDTO> CreateUserAsync(UserCreateDTO userDto)
+    {
+        var user = mapper.Map<User>(userDto); 
         await repository.AddUserAsync(user);
         await repository.SaveChangesAsync();
-        return user; 
+        return mapper.Map<UserResponseDTO>(user); 
     }
 }
