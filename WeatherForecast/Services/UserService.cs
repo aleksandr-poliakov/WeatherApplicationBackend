@@ -6,12 +6,16 @@ using WeatherForecast.Repositories;
 namespace WeatherForecast.Services;
 
 public class UserService(IUserRepository repository, IMapper mapper) {
-    public async Task<List<User>> GetAllUsersAsync() => await repository.GetAllUsersAsync();
+    public async Task<List<UserResponseDto>> GetAllUsersAsync()
+    {
+        var users = await repository.GetAllUsersAsync();
+        return mapper.Map<List<UserResponseDto>>(users);
+    }
 
     public async Task<UserResponseDto?> GetUserByEmailAsync(string email)
     {
         var user = await repository.GetUserByEmailAsync(email);
-        return user == null ? throw new InvalidOperationException($"User with email {email} not exist") : mapper.Map<UserResponseDto>(user);
+        return user == null ? null : mapper.Map<UserResponseDto>(user);
     }
 
     public async Task<UserResponseDto> CreateUserAsync(UserCreateDto userDto)

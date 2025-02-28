@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using WeatherForecast.Dto;
-using WeatherForecast.Models;
 using WeatherForecast.Services;
 
 namespace WeatherForecast.Controllers;
@@ -9,7 +8,7 @@ namespace WeatherForecast.Controllers;
 [Route("api/[controller]")]
 public class UserController(UserService service) : ControllerBase {
     [HttpGet]
-    public async Task<IActionResult> GetAllUsers() {
+    public async Task<ActionResult<List<UserResponseDto>>> GetAllUsers() {
         var users = await service.GetAllUsersAsync();
         return Ok(users);
     }
