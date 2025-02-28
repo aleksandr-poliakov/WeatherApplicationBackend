@@ -16,7 +16,12 @@ public class UserService(IUserRepository repository, IMapper mapper) {
 
     public async Task<UserResponseDto> CreateUserAsync(UserCreateDto userDto)
     {
-        var user = mapper.Map<User>(userDto); 
+        var existingUser = await repository.GetUserByEmailAsync(userDto.Email);
+        if (existingUser != null)
+        {
+            throw new InvalidOperationException($"User with email {userDto.Email} already exists.");
+        }
+        var user = mapper.Map<User>(userDto);
         await repository.AddUserAsync(user);
         await repository.SaveChangesAsync();
         return mapper.Map<UserResponseDto>(user); 

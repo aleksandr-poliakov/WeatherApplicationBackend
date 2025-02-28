@@ -8568,19 +8568,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/oleksandrp/.nuget/packages/": {}
+    "/Users/aleksandr/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/oleksandrp/RiderProjects/WeatherForecast/WeatherForecast/WeatherForecast.csproj",
+      "projectUniqueName": "/Users/aleksandr/WeatherApplicationBackend/WeatherForecast/WeatherForecast.csproj",
       "projectName": "WeatherForecast",
-      "projectPath": "/Users/oleksandrp/RiderProjects/WeatherForecast/WeatherForecast/WeatherForecast.csproj",
-      "packagesPath": "/Users/oleksandrp/.nuget/packages/",
-      "outputPath": "/Users/oleksandrp/RiderProjects/WeatherForecast/WeatherForecast/obj/",
+      "projectPath": "/Users/aleksandr/WeatherApplicationBackend/WeatherForecast/WeatherForecast.csproj",
+      "packagesPath": "/Users/aleksandr/.nuget/packages/",
+      "outputPath": "/Users/aleksandr/WeatherApplicationBackend/WeatherForecast/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/oleksandrp/.nuget/NuGet/NuGet.Config"
+        "/Users/aleksandr/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
