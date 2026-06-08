@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/aleksandr/WeatherApplicationBackend/WeatherForecast/WeatherForecast.csproj": {}
+    "/Users/oleksandrp/RiderProjects/WeatherForecast/WeatherForecast/WeatherForecast.csproj": {}
   },
   "projects": {
-    "/Users/aleksandr/WeatherApplicationBackend/WeatherForecast/WeatherForecast.csproj": {
+    "/Users/oleksandrp/RiderProjects/WeatherForecast/WeatherForecast/WeatherForecast.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/aleksandr/WeatherApplicationBackend/WeatherForecast/WeatherForecast.csproj",
+        "projectUniqueName": "/Users/oleksandrp/RiderProjects/WeatherForecast/WeatherForecast/WeatherForecast.csproj",
         "projectName": "WeatherForecast",
-        "projectPath": "/Users/aleksandr/WeatherApplicationBackend/WeatherForecast/WeatherForecast.csproj",
-        "packagesPath": "/Users/aleksandr/.nuget/packages/",
-        "outputPath": "/Users/aleksandr/WeatherApplicationBackend/WeatherForecast/obj/",
+        "projectPath": "/Users/oleksandrp/RiderProjects/WeatherForecast/WeatherForecast/WeatherForecast.csproj",
+        "packagesPath": "/Users/oleksandrp/.nuget/packages/",
+        "outputPath": "/Users/oleksandrp/RiderProjects/WeatherForecast/WeatherForecast/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/aleksandr/.nuget/NuGet/NuGet.Config"
+          "/Users/oleksandrp/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -48,9 +48,17 @@
               "target": "Package",
               "version": "[12.0.1, )"
             },
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[9.0.2, )"
+              "version": "[9.0.9, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -66,7 +74,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.2, )"
+              "version": "[10.0.8, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",

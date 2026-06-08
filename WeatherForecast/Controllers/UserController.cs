@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WeatherForecast.Dto;
 using WeatherForecast.Services;
@@ -6,9 +7,12 @@ namespace WeatherForecast.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class UserController(UserService service) : ControllerBase {
+[Authorize]
+public class UserController(IUserService service) : ControllerBase
+{
     [HttpGet]
-    public async Task<ActionResult<List<UserResponseDto>>> GetAllUsers() {
+    public async Task<ActionResult<List<UserResponseDto>>> GetAllUsers()
+    {
         var users = await service.GetAllUsersAsync();
         return Ok(users);
     }
@@ -22,9 +26,17 @@ public class UserController(UserService service) : ControllerBase {
     }
 
     [HttpPost]
+    [AllowAnonymous]
     public async Task<ActionResult<UserResponseDto>> CreateUser([FromBody] UserCreateDto userDto)
     {
-        var userResponse = await service.CreateUserAsync(userDto);
-        return CreatedAtAction(nameof(GetUser), new { email = userResponse.Email }, userResponse);
+        try
+        {
+            var userResponse = await service.CreateUserAsync(userDto);
+            return CreatedAtAction(nameof(GetUser), new { email = userResponse.Email }, userResponse);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return Conflict(ex.Message);
+        }
     }
 }

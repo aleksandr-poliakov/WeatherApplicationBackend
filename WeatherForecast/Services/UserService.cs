@@ -5,7 +5,8 @@ using WeatherForecast.Repositories;
 
 namespace WeatherForecast.Services;
 
-public class UserService(IUserRepository repository, IMapper mapper) {
+public class UserService(IUserRepository repository, IMapper mapper) : IUserService
+{
     public async Task<List<UserResponseDto>> GetAllUsersAsync()
     {
         var users = await repository.GetAllUsersAsync();
@@ -22,12 +23,11 @@ public class UserService(IUserRepository repository, IMapper mapper) {
     {
         var existingUser = await repository.GetUserByEmailAsync(userDto.Email);
         if (existingUser != null)
-        {
             throw new InvalidOperationException($"User with email {userDto.Email} already exists.");
-        }
+
         var user = mapper.Map<User>(userDto);
+        user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(userDto.Password);
         await repository.AddUserAsync(user);
-        await repository.SaveChangesAsync();
-        return mapper.Map<UserResponseDto>(user); 
+        return mapper.Map<UserResponseDto>(user);
     }
 }

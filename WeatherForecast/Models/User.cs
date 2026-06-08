@@ -3,17 +3,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WeatherForecast.Models;
 
-public class User(string name, string email)
+public class User
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; init; }  
+    public int Id { get; init; }
+
+    [Required, MaxLength(100)]
+    public string Name { get; set; } = string.Empty;
+
+    [Required, EmailAddress, MaxLength(255)]
+    public string Email { get; set; } = string.Empty;
 
     [Required]
-    [MaxLength(100)]
-    public string Name { get; init; } = name;
-
-    [Required, EmailAddress]
-    [MaxLength(255)]
-    public string Email { get; init; } = email;
+    public string PasswordHash { get; set; } = string.Empty;
 }
