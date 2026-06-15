@@ -1,6 +1,6 @@
-﻿namespace WeatherForecast.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-using System.ComponentModel.DataAnnotations;
+namespace WeatherForecast.Models;
 
 public class Subscription
 {

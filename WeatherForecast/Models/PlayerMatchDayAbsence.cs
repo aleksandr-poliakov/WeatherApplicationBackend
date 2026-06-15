@@ -1,20 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WeatherForecast.Models;
 
-public class Match
+namespace WeatherForecast.Models;
+
+public class PlayerMatchDayAbsence
 {
-    [Key]
-    public Guid Id { get; set; }
-
     [Required]
-    public MatchTypes Type { get; set; }
+    public Guid PlayerId { get; set; }
+
+    [ForeignKey(nameof(PlayerId))]
+    public Player Player { get; set; } = null!;
 
     [Required]
     public Guid MatchDayId { get; set; }
 
     [ForeignKey(nameof(MatchDayId))]
     public MatchDay MatchDay { get; set; } = null!;
-
-    public ICollection<MatchParticipant> Participants { get; set; } = [];
 }

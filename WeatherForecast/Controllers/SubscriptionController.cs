@@ -1,31 +1,53 @@
-﻿using WeatherForecast.Exception;
+﻿using Microsoft.AspNetCore.Mvc;
+using WeatherForecast.Dto;
+using WeatherForecast.Exception;
+using WeatherForecast.Services;
 
 namespace WeatherForecast.Controllers;
 
-using Microsoft.AspNetCore.Mvc;
-using WeatherForecast.Dto;
-using WeatherForecast.Services;
-
-
 [ApiController]
 [Route("api/[controller]")]
-public class SubscriptionController(IScheduleGeneratorService generator) : ControllerBase
+public class SubscriptionController(ISubscriptionService subscriptionService) : ControllerBase
 {
     [HttpPost("generate")]
-    public IActionResult Generate([FromBody] CreateSubscriptionDto dto)
+    public async Task<IActionResult> Generate([FromBody] CreateSubscriptionDto dto)
     {
         try
         {
-            var schedule = generator.Generate(dto);
-            return Ok(schedule);
+            var id = await subscriptionService.CreateAsync(dto);
+            return Ok(new { id });
         }
         catch (ValidationException ex)
         {
             return BadRequest(new { error = ex.Message });
         }
-        catch (System.Exception ex)
+    }
+
+    [HttpGet("{id:guid}/schedule")]
+    public async Task<IActionResult> GetSchedule(Guid id)
+    {
+        try
         {
-            return StatusCode(500, new { error = "An unexpected error occurred.", detail = ex.Message });
+            var schedule = await subscriptionService.GetScheduleAsync(id);
+            return Ok(schedule);
+        }
+        catch (ValidationException ex)
+        {
+            return NotFound(new { error = ex.Message });
+        }
+    }
+
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateSubscriptionDto dto)
+    {
+        try
+        {
+            var updatedId = await subscriptionService.UpdateAsync(id, dto);
+            return Ok(new { id = updatedId });
+        }
+        catch (ValidationException ex)
+        {
+            return NotFound(new { error = ex.Message });
         }
     }
 }

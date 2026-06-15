@@ -11,6 +11,8 @@ public class MatchDay
     [Required]
     public DateOnly Date { get; set; }
 
+    public bool IsPlayFree { get; set; } = false;
+
     [Required]
     public Guid SubscriptionId { get; set; }
 
@@ -18,4 +20,5 @@ public class MatchDay
     public Subscription Subscription { get; set; } = null!;
 
     public ICollection<Match> Matches { get; set; } = [];
+    public ICollection<PlayerMatchDayAbsence> Absences { get; set; } = [];
 }
