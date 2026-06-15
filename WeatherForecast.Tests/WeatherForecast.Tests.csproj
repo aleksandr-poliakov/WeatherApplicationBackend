@@ -25,4 +25,9 @@
         <ProjectReference Include="..\WeatherForecast\WeatherForecast.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Controllers\" />
+      <Folder Include="Helpers\" />
+    </ItemGroup>
+
 </Project>
