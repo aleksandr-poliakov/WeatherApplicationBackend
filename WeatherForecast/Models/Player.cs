@@ -19,5 +19,4 @@ public class Player
     public Subscription Subscription { get; set; } = null!;
 
     public ICollection<MatchParticipant> Participations { get; set; } = [];
-    public ICollection<PlayerMatchDayAbsence> Absences { get; set; } = [];
 }

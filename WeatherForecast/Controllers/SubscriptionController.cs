@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WeatherForecast.Dto;
-using WeatherForecast.Exception;
+using WeatherForecast.Exceptions;
 using WeatherForecast.Services;
 
 namespace WeatherForecast.Controllers;
@@ -17,7 +17,7 @@ public class SubscriptionController(ISubscriptionService subscriptionService) : 
             var id = await subscriptionService.CreateAsync(dto);
             return Ok(new { id });
         }
-        catch (ValidationException ex)
+        catch (Exception ex)
         {
             return BadRequest(new { error = ex.Message });
         }
@@ -31,9 +31,9 @@ public class SubscriptionController(ISubscriptionService subscriptionService) : 
             var schedule = await subscriptionService.GetScheduleAsync(id);
             return Ok(schedule);
         }
-        catch (ValidationException ex)
+        catch (Exception ex)
         {
-            return NotFound(new { error = ex.Message });
+            return BadRequest(new { error = ex.Message });
         }
     }
 

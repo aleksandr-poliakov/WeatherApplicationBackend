@@ -10,15 +10,11 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
      public DbSet<MatchDay> MatchDays => Set<MatchDay>();
      public DbSet<Match> Matches => Set<Match>();
      public DbSet<MatchParticipant> MatchParticipants => Set<MatchParticipant>();
-     public DbSet<PlayerMatchDayAbsence> PlayerMatchDayAbsences => Set<PlayerMatchDayAbsence>();
 
      protected override void OnModelCreating(ModelBuilder modelBuilder)
      {
          modelBuilder.Entity<MatchParticipant>()
              .HasKey(mp => new { mp.MatchId, mp.PlayerId });
-
-         modelBuilder.Entity<PlayerMatchDayAbsence>()
-             .HasKey(a => new { a.PlayerId, a.MatchDayId });
 
          // tell EF to store MatchType as string not int
          modelBuilder.Entity<Match>()

@@ -1,4 +1,4 @@
-﻿using WeatherForecast.Exception;
+﻿using WeatherForecast.Exceptions;
 using WeatherForecast.Models;
 
 namespace WeatherForecast.Services;
